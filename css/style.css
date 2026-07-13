@@ -45,3 +45,69 @@ body{
     cursor:pointer;
 
 }
+.hero{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:70px 80px;
+    background: linear-gradient(135deg, #0B1F3A, #12345A);
+
+    color: white;
+}
+.hero-content {
+    width:50%;
+}
+.hero-content h1{
+    font-size:52px;
+    line-height: 1.2;
+    color: white;
+    margin-bottom:20px;
+}
+.hero-content h1 span{
+    color: #FFD54F;
+}
+.hero-content p{
+    font-size:18px;
+    line-height:1.6;
+    margin-bottom:30px;
+}
+.hero-image{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-image img{
+    width: 100%;
+    max-width: 650px;
+    height: auto;
+}
+.shop-btn{
+    background-color:#FFD54F;
+    color:black;
+    border-radius:5px;
+    padding:12px 24px;
+    cursor:pointer; 
+    border:none;
+    transition:0.3s;
+}
+.explore-btn{
+    background-color:white;
+    color:black;
+    border-radius:5px;
+    padding:12px 24px;
+    border:none;
+    cursor:pointer;
+    transition:0.3s; 
+}
+.shop-btn:hover{
+    background-color:#FFC107;
+}
+
+.explore-btn:hover{
+    background-color:#f1f1f1;
+}
+.hero-buttons{
+    display:flex;
+    gap:20px;
+}
