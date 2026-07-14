@@ -1,49 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width,intial-scale=1.0">
-        <title>ShopBuddy</title>
-        <link rel="stylesheet" href="css/style.css">
-    </head>
-    <body>
-        <header>
-            <nav class="navbar">
-                <div class="logo">
-                <h2>🛒 ShopBuddy</h2>
-                </div>
-                <div class="search-box">
-                <input type="text" placeholder="Search for products...">
-                </div>
-                <div class="nav-icons">
-                <button>🤍</button>
 
-            <button>🛒</button>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,intial-scale=1.0">
+    <title>ShopBuddy</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
 
-            <button>👤</button>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <h2>
+    <span class="shop">Shop</span><span class="buddy">Buddy</span>
+</h2>
+                <p>By Marwah Communications</p>
             </div>
-            </nav>
+            <div class="search-box">
+                <input type="text" placeholder="Search for products...">
+                <button class="search-btn">🔍</button>
+            </div>
+            <div class="nav-icons">
+                <div class="icon-item">
+                    <i class="fa-regular fa-heart"></i>
+                    <span>Wishlist</span>
+                </div>
 
-        </header>
-        <main>
-            <section class="hero">
-              <div class="hero-content">
-                <h1>Explore the Latest<br><span>Gadgets & Accessories</span></h1>
-                <p>
-                    Discover premium electronics for your home and everyday life.
-            From smartphones to home appliances, ShopBuddy brings trusted
-            products from Marwah Communications.
+                <div class="icon-item">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span>Cart</span>
+                </div>
+
+                <div class="icon-item">
+                    <i class="fa-regular fa-user"></i>
+                    <span>Account</span>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <p class="hero-tag">MARWAH COMMUNICATIONS</p>
+
+                <h1>
+                    Explore the Latest <br>
+                    <span>Gadgets & Accessories</span>
+                </h1>
+
+                <p class="hero-description">
+                    Discover top-quality electronics that make life smarter,
+                    easier & better.
                 </p>
                 <div class="hero-buttons">
-                    <button class="shop-btn">Shop now</button>
-                    <button class="explore-btn">Explore Categories</button>
+                    <button class="shop-btn">Shop now →</button>
+                    <button class="explore-btn">Explore Categories →</button>
                 </div>
-              </div> 
-              <div class="hero-image">
+            </div>
+            <div class="hero-image">
                 <img src="images/hero.png" alt="Electronics Collection">
-              </div>
-            </section>
-        </main>
+            </div>
+        </section>
+        <section class="features">
 
-    </body>
+    <div class="feature-card">
+        <i class="fa-solid fa-truck-fast"></i>
+        <div>
+            <h3>Free Shipping</h3>
+            <p>On orders over ₹499</p>
+        </div>
+    </div>
+
+    <div class="feature-card">
+        <i class="fa-solid fa-shield-halved"></i>
+        <div>
+            <h3>100% Original Products</h3>
+            <p>Genuine & Trusted</p>
+        </div>
+    </div>
+
+    <div class="feature-card">
+        <i class="fa-solid fa-headset"></i>
+        <div>
+            <h3>24/7 Customer Support</h3>
+            <p>We're here to help</p>
+        </div>
+    </div>
+
+</section>
+    </main>
+
+</body>
+
 </html>
