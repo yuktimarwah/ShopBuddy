@@ -1,5 +1,38 @@
+const params = new URLSearchParams(window.location.search);
+
+const searchTerm = params.get("search") || "";
+
+const filteredProducts = products.filter(product => {
+
+    return (
+        product.name.toLowerCase().includes(searchTerm) ||
+        product.brand.toLowerCase().includes(searchTerm) ||
+        product.category.toLowerCase().includes(searchTerm) ||
+        product.tags.join(" ").toLowerCase().includes(searchTerm)
+    );
+
+});
+
+const pageTitle = document.querySelector("#page-title");
+const resultCount = document.querySelector("#result-count");
+
+if (filteredProducts.length > 0) {
+
+    pageTitle.innerText = `Results for "${searchTerm}"`;
+
+    resultCount.innerText = `${filteredProducts.length} products found`;
+
+} else {
+
+    pageTitle.innerText = `No results found for "${searchTerm}"`;
+
+    resultCount.innerText = `Try searching with another keyword.`;
+
+}
+
 const productGrid = document.querySelector('.product-grid');
-products.forEach(product => {
+
+filteredProducts.forEach(product => {
     const card = `
     <div class="product-card">
     <img src="${product.image}" alt="${product.name}">
