@@ -34,7 +34,7 @@ const productGrid = document.querySelector('.product-grid');
 
 filteredProducts.forEach(product => {
     const card = `
-    <div class="product-card">
+    <div class="product-card" data-id="${product.id}">
     <img src="${product.image}" alt="${product.name}">
     <p class="brand">${product.brand}</p>
     <h3 class="name">${product.name}</h3>
@@ -51,3 +51,21 @@ filteredProducts.forEach(product => {
     `;
     productGrid.innerHTML += card;
 })
+
+const productCards = document.querySelectorAll(".product-card");
+
+productCards.forEach(card => {
+
+    card.addEventListener("click", () => {
+        const productId = card.dataset.id;
+
+        window.location.href = `product-details.html?id=${productId}`;
+    });
+
+    const addCartButton = card.querySelector(".add-cart");
+
+    addCartButton.addEventListener("click", (event) => {
+        event.stopPropagation();
+    });
+
+});

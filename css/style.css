@@ -375,3 +375,92 @@ footer{
 footer p{
     color:#ddd;
 }
+
+.compare-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.compare-dialog {
+    width: 90%;
+    max-width: 600px;
+    background: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.compare-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.compare-header h2 {
+    margin: 0;
+}
+
+.close-compare {
+    border: none;
+    background: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.compare-products {
+    display: flex;
+    gap: 20px;
+}
+
+.compare-slot {
+    flex: 1;
+}
+
+.compare-slot label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.compare-slot input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.compare-submit {
+    display: block;
+    margin: 25px auto 0;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.compare-suggestions {
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: white;
+    max-height: 180px;
+    overflow-y: auto;
+}
+
+.compare-suggestion {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+
+.compare-suggestion:hover {
+    background: #f5f5f5;
+}

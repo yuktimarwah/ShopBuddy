@@ -328,7 +328,7 @@ const products = [
     bluetoothCalling: "Yes"
   },
   {
-    id: 19,
+    id: 19, 
     name: "Noise ColorFit Pro 6",
     brand: "Noise",
     category: "Smart Watch",
