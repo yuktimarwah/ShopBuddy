@@ -46,7 +46,6 @@ specifications.forEach(field => {
     `;
 });
 
-
 const comparisonContainer = document.getElementById("comparison-container");
 
 comparisonContainer.innerHTML = `

@@ -23,28 +23,20 @@
         <div class="compare-products">
 
             <div class="compare-slot">
-    <label>Product 1</label>
+                <label>Product 1</label>
 
-    <input 
-        type="text" 
-        id="compare-product-1"
-        placeholder="Search for a product..."
-    >
+                <input type="text" id="compare-product-1" placeholder="Search for a product...">
 
-    <div class="compare-suggestions" id="suggestions-1"></div>
-</div>
+                <div class="compare-suggestions" id="suggestions-1"></div>
+            </div>
 
             <div class="compare-slot">
-    <label>Product 2</label>
+                <label>Product 2</label>
 
-    <input 
-        type="text" 
-        id="compare-product-2"
-        placeholder="Search for a product..."
-    >
+                <input type="text" id="compare-product-2" placeholder="Search for a product...">
 
-    <div class="compare-suggestions" id="suggestions-2"></div>
-</div>
+                <div class="compare-suggestions" id="suggestions-2"></div>
+            </div>
 
         </div>
 
@@ -107,8 +99,13 @@
                     easier & better.
                 </p>
                 <div class="hero-buttons">
-                    <button class="shop-btn">Shop now →</button>
-                    <button class="explore-btn">Explore Categories →</button>
+                    <button class="shop-btn" onclick="window.location.href='pages/products.html'">
+    Explore Products →
+</button>
+
+                    <button class="explore-btn" onclick="window.location.href='pages/recommendation.html'">
+                        Find What Fits You →
+                    </button>
                 </div>
             </div>
             <div class="hero-image">
@@ -285,10 +282,10 @@
     <script src="js/script.js"></script>
     <script src="js/data.js"></script>
     <script>
-    window.comparePagePath = "pages/compare.html";
-</script>
-<script src="js/compare.js"></script>
-<script src="js/cart.js"></script>
+        window.comparePagePath = "pages/compare.html";
+    </script>
+    <script src="js/compare.js"></script>
+    <script src="js/cart.js"></script>
 
 </body>
 

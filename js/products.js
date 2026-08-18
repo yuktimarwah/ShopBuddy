@@ -16,16 +16,19 @@ const filteredProducts = products.filter(product => {
 const pageTitle = document.querySelector("#page-title");
 const resultCount = document.querySelector("#result-count");
 
-if (filteredProducts.length > 0) {
+if (searchTerm === "") {
+
+    pageTitle.innerText = "All Products";
+    resultCount.innerText = "";
+
+} else if (filteredProducts.length > 0) {
 
     pageTitle.innerText = `Results for "${searchTerm}"`;
-
     resultCount.innerText = `${filteredProducts.length} products found`;
 
 } else {
 
     pageTitle.innerText = `No results found for "${searchTerm}"`;
-
     resultCount.innerText = `Try searching with another keyword.`;
 
 }
