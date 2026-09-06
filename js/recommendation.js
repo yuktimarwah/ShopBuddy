@@ -2,11 +2,10 @@ const category = document.getElementById("category");
 const categoryFields = document.getElementById("category-fields");
 
 category.addEventListener("change", () => {
-    console.log("Selected category:", category.value);
-
     const selectedCategory = category.value;
-
     categoryFields.innerHTML = "";
+
+    // ================= MOBILE =================
 
     if (selectedCategory === "Mobile") {
 
@@ -41,41 +40,10 @@ category.addEventListener("change", () => {
                 <option value="Battery">Battery</option>
             </select>
         `;
-
     }
 
-    else if (selectedCategory === "Laptop") {
 
-        categoryFields.innerHTML = `
-            <label>Budget</label>
-            <input type="number" id="budget" placeholder="Enter your budget">
-
-            <label>RAM</label>
-            <select id="ram">
-                <option value="">Any</option>
-                <option value="8 GB">8 GB</option>
-                <option value="16 GB">16 GB</option>
-                <option value="32 GB">32 GB</option>
-            </select>
-
-            <label>Storage</label>
-            <select id="storage">
-                <option value="">Any</option>
-                <option value="256 GB">256 GB</option>
-                <option value="512 GB">512 GB</option>
-                <option value="1 TB">1 TB</option>
-            </select>
-
-            <label>Priority</label>
-            <select id="priority">
-                <option value="">Any</option>
-                <option value="Performance">Performance</option>
-                <option value="Battery">Battery</option>
-                <option value="Display">Display</option>
-            </select>
-        `;
-
-    }
+    // ================= AIR CONDITIONER =================
 
     else if (selectedCategory === "Air Conditioner") {
 
@@ -107,19 +75,20 @@ category.addEventListener("change", () => {
             </select>
 
             <label>Priority</label>
-
-<select id="priority">
-    <option value="">Any</option>
-    <option value="Energy Saving">Energy Saving</option>
-    <option value="Cooling">Cooling</option>
-    <option value="Budget">Budget</option>
-    <option value="Premium Features">Premium Features</option>
-</select>
+            <select id="priority">
+                <option value="">Any</option>
+                <option value="Energy Saving">Energy Saving</option>
+                <option value="Cooling">Cooling</option>
+                <option value="Budget">Budget</option>
+                <option value="Premium Features">Premium Features</option>
+            </select>
         `;
-
     }
 
-    else if (selectedCategory === "tablet") {
+
+    // ================= TABLET =================
+
+    else if (selectedCategory === "Tablet") {
 
         categoryFields.innerHTML = `
             <label>Budget</label>
@@ -151,10 +120,12 @@ category.addEventListener("change", () => {
                 <option value="Battery">Battery</option>
             </select>
         `;
-
     }
 
-    else if (selectedCategory === "smart watch") {
+
+    // ================= SMART WATCH =================
+
+    else if (selectedCategory === "Smart Watch") {
 
         categoryFields.innerHTML = `
             <label>Budget</label>
@@ -182,10 +153,12 @@ category.addEventListener("change", () => {
                 <option value="Calling">Calling</option>
             </select>
         `;
-
     }
 
-    else if (selectedCategory === "refrigerator") {
+
+    // ================= REFRIGERATOR =================
+
+    else if (selectedCategory === "Refrigerator") {
 
         categoryFields.innerHTML = `
             <label>Budget</label>
@@ -209,11 +182,20 @@ category.addEventListener("change", () => {
                 <option value="4 Star">4 Star</option>
                 <option value="5 Star">5 Star</option>
             </select>
-        `;
 
+            <label>Priority</label>
+            <select id="priority">
+                <option value="">Any</option>
+                <option value="Energy Saving">Energy Saving</option>
+                <option value="Capacity">Capacity</option>
+            </select>
+        `;
     }
 
-    else if (selectedCategory === "washing machine") {
+
+    // ================= WASHING MACHINE =================
+
+    else if (selectedCategory === "Washing Machine") {
 
         categoryFields.innerHTML = `
             <label>Budget</label>
@@ -236,11 +218,20 @@ category.addEventListener("change", () => {
                 <option value="4 Star">4 Star</option>
                 <option value="5 Star">5 Star</option>
             </select>
-        `;
 
+            <label>Priority</label>
+            <select id="priority">
+                <option value="">Any</option>
+                <option value="Energy Saving">Energy Saving</option>
+                <option value="Capacity">Capacity</option>
+            </select>
+        `;
     }
 
-    else if (selectedCategory === "microwave") {
+
+    // ================= MICROWAVE =================
+
+    else if (selectedCategory === "Microwave") {
 
         categoryFields.innerHTML = `
             <label>Budget</label>
@@ -262,7 +253,6 @@ category.addEventListener("change", () => {
 
 
 
-
 const recommendButton = document.getElementById("recommend-button");
 
 recommendButton.addEventListener("click", () => {
@@ -274,91 +264,441 @@ recommendButton.addEventListener("click", () => {
         return;
     }
 
-  if (selectedCategory !== "Mobile") {
-    alert("Is category ki recommendations abhi implement kar rahe hain.");
-    return;
-}
+    const budgetElement = document.getElementById("budget");
 
-    const budget = Number(document.getElementById("budget").value);
-    const ram = document.getElementById("ram").value;
-    const storage = document.getElementById("storage").value;
-    const priority = document.getElementById("priority").value;
+    if (!budgetElement) {
+        alert("Please select a category first.");
+        return;
+    }
+
+    const budget = Number(budgetElement.value);
 
     if (!budget) {
         alert("Please enter your budget.");
         return;
     }
 
-   const categoryProducts = products.filter(product => {
+    // Read only fields that exist for the selected category
+    const getValue = (id) => {
+        const element = document.getElementById(id);
+        return element ? element.value : "";
+    };
 
-    if (product.category !== selectedCategory) {
-        return false;
-    }
+    const ram = getValue("ram");
+    const storage = getValue("storage");
+    const ton = getValue("ton");
+    const inverter = getValue("inverter");
+    const starRating = getValue("starRating");
+    const display = getValue("display");
+    const bluetoothCalling = getValue("bluetoothCalling");
+    const capacity = getValue("capacity");
+    const priority = getValue("priority");
 
-    if (selectedCategory === "Mobile") {
 
-        if (budget && product.price > budget) {
+    // ================= HARD FILTER =================
+    // Category + budget must match
+
+    const categoryProducts = products.filter(product => {
+
+        if (product.category !== selectedCategory) {
             return false;
         }
 
-    }
-
-    return true;
-});
-
-console.log("Mobile products:", categoryProducts);
-console.log(
-    "All mobile prices:",
-    products
-        .filter(product => product.category === "Mobile")
-        .map(product => `${product.name} - ₹${product.price}`)
-);
-
-
-const scoredProducts = categoryProducts.map(product => {
-
-        let score = 0;
-
-        // Budget
-        if (product.price <= budget) {
-            score += 3;
+        if (product.price > budget) {
+            return false;
         }
 
-        // RAM
-        if (ram && product.ram === ram) {
-            score += 2;
+        return true;
+    });
+
+
+    // ================= SCORING =================
+
+    const scoredProducts = categoryProducts.map(product => {
+
+        // Every product here already satisfies budget
+        let score = 3;
+
+
+        // ================= MOBILE / TABLET RAM =================
+
+        if (
+            (selectedCategory === "Mobile" ||
+             selectedCategory === "Tablet") &&
+            ram &&
+            product.ram
+        ) {
+
+            const userRam = parseInt(ram);
+            const productRam = parseInt(product.ram);
+
+            if (productRam === userRam) {
+                score += 3;
+            }
+            else if (productRam > userRam) {
+                score += 2;
+            }
+            else if (productRam >= userRam - 2) {
+                score += 1;
+            }
         }
 
-        // Storage
-        if (storage && product.storage === storage) {
-            score += 2;
+
+        // ================= MOBILE / TABLET STORAGE =================
+
+        if (
+            (selectedCategory === "Mobile" ||
+             selectedCategory === "Tablet") &&
+            storage &&
+            product.storage
+        ) {
+
+            const userStorage = parseInt(storage);
+            const productStorage = parseInt(product.storage);
+
+            if (productStorage === userStorage) {
+                score += 3;
+            }
+            else if (productStorage > userStorage) {
+                score += 2;
+            }
+            else if (productStorage >= userStorage / 2) {
+                score += 1;
+            }
         }
 
-        // Priority
+
+        // ================= MOBILE =================
+
         if (selectedCategory === "Mobile") {
 
-    if (priority === "Camera" && product.camera) {
-        score += 2;
-    }
+            if (priority === "Camera" && product.camera) {
+                score += 2;
+            }
 
-    if (priority === "Performance" && product.processor) {
-        score += 2;
-    }
+            if (priority === "Performance" && product.processor) {
+                score += 2;
+            }
 
-    if (priority === "Battery" && product.battery) {
-        score += 2;
-    }
+            if (priority === "Battery" && product.battery) {
+                score += 2;
+            }
+        }
 
-}
 
+        // ================= AC =================
+
+        if (selectedCategory === "Air Conditioner") {
+
+            // Capacity
+            if (ton && product.ton === ton) {
+                score += 3;
+            }
+
+            // Inverter
+            if (inverter && product.inverter === inverter) {
+                score += 3;
+            }
+
+            // Star Rating
+            if (starRating && product.starRating === starRating) {
+                score += 3;
+            }
+
+
+            // Priority
+            if (priority === "Energy Saving") {
+
+                if (
+                    product.tags &&
+                    product.tags.includes("Energy Saving")
+                ) {
+                    score += 2;
+                }
+                else if (product.starRating === "5 Star") {
+                    score += 1;
+                }
+            }
+
+
+            if (priority === "Cooling") {
+
+                if (product.ton === ton) {
+                    score += 2;
+                }
+            }
+
+
+            if (priority === "Premium Features") {
+
+                if (
+                    product.tags &&
+                    (
+                        product.tags.includes("Premium") ||
+                        product.tags.includes("AI")
+                    )
+                ) {
+                    score += 2;
+                }
+            }
+
+
+            if (priority === "Budget") {
+
+                const cheapestPrice = Math.min(
+                    ...categoryProducts.map(p => p.price)
+                );
+
+                if (product.price === cheapestPrice) {
+                    score += 3;
+                }
+                else if (product.price <= cheapestPrice + 5000) {
+                    score += 2;
+                }
+                else {
+                    score += 1;
+                }
+            }
+        }
+
+
+        // ================= TABLET =================
+
+        if (selectedCategory === "Tablet") {
+
+            if (priority === "Display" && product.display) {
+                score += 2;
+            }
+
+            if (priority === "Performance" && product.processor) {
+                score += 2;
+            }
+
+            if (priority === "Battery" && product.battery) {
+                score += 2;
+            }
+        }
+
+
+        // ================= SMART WATCH =================
+
+        if (selectedCategory === "Smart Watch") {
+
+            if (
+                display &&
+                product.display === display
+            ) {
+                score += 3;
+            }
+
+            if (
+                bluetoothCalling &&
+                product.bluetoothCalling === bluetoothCalling
+            ) {
+                score += 3;
+            }
+
+
+            if (priority === "Battery" && product.battery) {
+                score += 2;
+            }
+
+            if (priority === "Display" && product.display) {
+                score += 2;
+            }
+
+            if (
+                priority === "Calling" &&
+                product.bluetoothCalling === "Yes"
+            ) {
+                score += 2;
+            }
+        }
+
+
+        // ================= REFRIGERATOR =================
+
+        if (selectedCategory === "Refrigerator") {
+
+            if (
+                inverter &&
+                product.inverter === inverter
+            ) {
+                score += 3;
+            }
+
+            if (
+                starRating &&
+                product.starRating === starRating
+            ) {
+                score += 3;
+            }
+
+
+            if (
+                capacity &&
+                product.capacity
+            ) {
+
+                const userCapacity = parseInt(capacity);
+                const productCapacity = parseInt(product.capacity);
+
+                if (
+                    !isNaN(userCapacity) &&
+                    !isNaN(productCapacity)
+                ) {
+
+                    if (productCapacity === userCapacity) {
+                        score += 3;
+                    }
+                    else if (productCapacity >= userCapacity) {
+                        score += 2;
+                    }
+                    else if (productCapacity >= userCapacity * 0.8) {
+                        score += 1;
+                    }
+                }
+            }
+
+
+            if (priority === "Energy Saving") {
+
+                if (product.inverter === "Yes") {
+                    score += 2;
+                }
+
+                if (product.starRating === "5 Star") {
+                    score += 1;
+                }
+            }
+
+
+            if (
+                priority === "Capacity" &&
+                product.capacity
+            ) {
+                score += 2;
+            }
+        }
+
+
+        // ================= WASHING MACHINE =================
+
+        if (selectedCategory === "Washing Machine") {
+
+            if (
+                inverter &&
+                product.inverter === inverter
+            ) {
+                score += 3;
+            }
+
+            if (
+                starRating &&
+                product.starRating === starRating
+            ) {
+                score += 3;
+            }
+
+
+            if (
+                capacity &&
+                product.capacity
+            ) {
+
+                const userCapacity = parseInt(capacity);
+                const productCapacity = parseInt(product.capacity);
+
+                if (
+                    !isNaN(userCapacity) &&
+                    !isNaN(productCapacity)
+                ) {
+
+                    if (productCapacity === userCapacity) {
+                        score += 3;
+                    }
+                    else if (productCapacity >= userCapacity) {
+                        score += 2;
+                    }
+                    else if (productCapacity >= userCapacity * 0.8) {
+                        score += 1;
+                    }
+                }
+            }
+
+
+            if (
+                priority === "Energy Saving" &&
+                product.inverter === "Yes"
+            ) {
+                score += 2;
+            }
+
+            if (
+                priority === "Capacity" &&
+                product.capacity
+            ) {
+                score += 2;
+            }
+        }
+
+
+        // ================= MICROWAVE =================
+
+        if (selectedCategory === "Microwave") {
+
+            if (
+                capacity &&
+                product.capacity
+            ) {
+
+                const userCapacity = parseInt(capacity);
+                const productCapacity = parseInt(product.capacity);
+
+                if (
+                    !isNaN(userCapacity) &&
+                    !isNaN(productCapacity)
+                ) {
+
+                    if (productCapacity === userCapacity) {
+                        score += 3;
+                    }
+                    else if (productCapacity >= userCapacity) {
+                        score += 2;
+                    }
+                    else if (productCapacity >= userCapacity * 0.8) {
+                        score += 1;
+                    }
+                }
+            }
+
+
+            if (
+                priority === "Capacity" &&
+                product.capacity
+            ) {
+                score += 2;
+            }
+
+
+            if (
+                priority === "Features" &&
+                product.tags &&
+                product.tags.length > 0
+            ) {
+                score += 2;
+            }
+        }
 
 
         return {
             product,
             score
         };
-
     });
+
+
+    // ================= SORT =================
 
     scoredProducts.sort((a, b) => {
 
@@ -366,62 +706,90 @@ const scoredProducts = categoryProducts.map(product => {
             return b.score - a.score;
         }
 
+        // Rating breaks ties
         return b.product.rating - a.product.rating;
-
     });
 
+
+    // Top 3
     const recommendations = scoredProducts.slice(0, 3);
 
-    const resultsContainer = document.getElementById("recommendation-results");
 
-resultsContainer.innerHTML = "";
+    // ================= DISPLAY RESULTS =================
 
-if (recommendations.length === 0) {
+    const resultsContainer =
+        document.getElementById("recommendation-results");
 
-    resultsContainer.innerHTML = `
-        <h2>No matching products found.</h2>
-        <p>Try adjusting your requirements.</p>
-    `;
+    resultsContainer.innerHTML = "";
 
-    return;
-}
 
-recommendations.forEach((item, index) => {
+    if (recommendations.length === 0) {
 
-    const product = item.product;
+        resultsContainer.innerHTML = `
+            <h2>No matching products found.</h2>
+            <p>Try increasing your budget or changing your requirements.</p>
+        `;
 
-    const card = document.createElement("div");
+        return;
+    }
 
-    card.classList.add("recommendation-card");
 
-    card.innerHTML = `
-        ${index === 0 ? `<span class="best-match">⭐ Best Match</span>` : ""}
+    recommendations.forEach((item, index) => {
 
-        <img src="../${product.image}" alt="${product.name}">
+        const product = item.product;
 
-        <div class="recommendation-info">
+        const card = document.createElement("div");
 
-            <p class="brand">${product.brand}</p>
+        card.classList.add("recommendation-card");
 
-            <h2>${product.name}</h2>
 
-            <p class="price">₹${product.price}</p>
+        card.innerHTML = `
+            ${
+                index === 0
+                    ? `<span class="best-match">⭐ Best Match</span>`
+                    : ""
+            }
 
-            <p>⭐ ${product.rating} (${product.reviews} reviews)</p>
+            <img
+                src="../${product.image}"
+                alt="${product.name}"
+            >
 
-            <p class="match-score">
-                Match Score: ${item.score}
-            </p>
+            <div class="recommendation-info">
 
-            <button class="view-product"
-                onclick="window.location.href='product-details.html?id=${product.id}'">
-                View Details
-            </button>
+                <p class="brand">
+                    ${product.brand}
+                </p>
 
-        </div>
-    `;
+                <h2>
+                    ${product.name}
+                </h2>
 
-    resultsContainer.appendChild(card);
+                <p class="price">
+                    ₹${product.price}
+                </p>
 
-});
+                <p>
+                    ⭐ ${product.rating}
+                    (${product.reviews} reviews)
+                </p>
+
+                <p class="match-score">
+                    Match Score: ${item.score}
+                </p>
+
+                <button
+                    class="view-product"
+                    onclick="window.location.href='product-details.html?id=${product.id}'"
+                >
+                    View Details
+                </button>
+
+            </div>
+        `;
+
+
+        resultsContainer.appendChild(card);
+    });
+
 });
