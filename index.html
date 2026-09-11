@@ -100,8 +100,8 @@
                 </p>
                 <div class="hero-buttons">
                     <button class="shop-btn" onclick="window.location.href='pages/products.html'">
-    Explore Products →
-</button>
+                        Explore Products →
+                    </button>
 
                     <button class="explore-btn" onclick="window.location.href='pages/recommendation.html'">
                         Find What Fits You →
@@ -115,142 +115,88 @@
         <section class="features">
 
             <div class="feature-card">
-
-                <i class="fa-solid fa-truck-fast"></i>
+                <i class="fa-solid fa-sliders"></i>
 
                 <div class="feature-content">
-                    <h3>Free Shipping</h3>
-                    <p>Free delivery on orders over ₹499</p>
+                    <h3>Personalized Picks</h3>
+                    <p>Tell us what you need, we'll find your best matches.</p>
                 </div>
-
             </div>
 
             <div class="feature-card">
-
-                <i class="fa-solid fa-shield-halved"></i>
+                <i class="fa-solid fa-code-compare"></i>
 
                 <div class="feature-content">
-                    <h3>100% Genuine Products</h3>
-                    <p>Quality products from trusted brands</p>
+                    <h3>Compare Before You Decide</h3>
+                    <p>Put two products side-by-side and choose smarter.</p>
                 </div>
-
             </div>
 
             <div class="feature-card">
-
-                <i class="fa-solid fa-headset"></i>
+                <i class="fa-solid fa-circle-check"></i>
 
                 <div class="feature-content">
-                    <h3>24/7 Customer Support</h3>
-                    <p>We're always here to help you</p>
+                    <h3>Choose With Confidence</h3>
+                    <p>Clear specs, ratings and useful product details.</p>
                 </div>
-
             </div>
 
         </section>
 
-        <section class="featured-products">
+       <section class="featured-products">
 
-            <h2 class="section-title">
-                <i class="fa-solid fa-fire"></i> Featured Products
-            </h2>
-            <p class="section-subtitle">
-                Explore our best-selling gadgets
-            </p>
+    <h2 class="section-title">
+        <i class="fa-solid fa-fire"></i> Popular Right Now
+    </h2>
 
-            <div class="product-grid">
+    <p class="section-subtitle">
+        A few products worth taking a closer look at.
+    </p>
 
-                <div class="product-card">
+    <div class="product-grid" id="popular-products-grid"></div>
 
-                    <img src="images/iphone.jpg" alt="iPhone">
-
-                    <h3>iPhone 16 Pro</h3>
-
-                    <p class="price">₹1,19,999</p>
-
-                    <button class="add-cart">Add to Cart</button>
-
-                </div>
-
-                <div class="product-card">
-
-                    <img src="images/watch.jpg" alt="Watch">
-
-                    <h3>Apple Watch</h3>
-
-                    <p class="price">₹39,999</p>
-
-                    <button class="add-cart">Add to Cart</button>
-
-                </div>
-
-                <div class="product-card">
-
-                    <img src="images/airpods.jpg" alt="AirPods">
-
-                    <h3>AirPods Pro</h3>
-
-                    <p class="price">₹24,999</p>
-
-                    <button class="add-cart">Add to Cart</button>
-
-                </div>
-
-                <div class="product-card">
-
-                    <img src="images/macbook.jpg" alt="MacBook">
-
-                    <h3>MacBook Air</h3>
-
-                    <p class="price">₹99,999</p>
-
-                    <button class="add-cart">Add to Cart</button>
-
-                </div>
-
-            </div>
-
-        </section>
+</section>
 
         <section class="categories">
 
-            <h2 class="section-title">
-                <i class="fa-solid fa-layer-group"></i> Shop by Categories
-            </h2>
+    <h2 class="section-title">
+        <i class="fa-solid fa-layer-group"></i> Explore Categories
+    </h2>
 
-            <p class="section-subtitle">
-                Find the perfect device for every need.
-            </p>
+    <p class="section-subtitle">
+        Browse products based on what you're looking for.
+    </p>
 
-            <div class="category-grid">
+    <div class="category-grid">
 
-                <div class="category-card">
-                    <i class="fa-solid fa-mobile-screen-button"></i>
-                    <h3>Mobiles</h3>
-                </div>
+    <div class="category-card">
+        <i class="fa-solid fa-mobile-screen-button"></i>
+        <h3>Mobiles</h3>
+    </div>
 
-                <div class="category-card">
-                    <i class="fa-solid fa-laptop"></i>
-                    <h3>Laptops</h3>
-                </div>
+    <div class="category-card">
+        <i class="fa-solid fa-tablet-screen-button"></i>
+        <h3>Tablets</h3>
+    </div>
 
-                <div class="category-card">
-                    <i class="fa-solid fa-headphones"></i>
-                    <h3>Audio</h3>
-                </div>
+    <div class="category-card">
+        <i class="fa-solid fa-clock"></i>
+        <h3>Smart Watches</h3>
+    </div>
 
-                <div class="category-card">
-                    <i class="fa-solid fa-clock"></i>
-                    <h3>Smart Watches</h3>
-                </div>
-                <div class="category-card">
-                    <i class="fa-solid fa-house"></i>
-                    <h3>Home Appliances</h3>
-                </div>
+    <div class="category-card">
+        <i class="fa-solid fa-snowflake"></i>
+        <h3>Air Conditioners</h3>
+    </div>
 
-            </div>
+    <div class="category-card">
+        <i class="fa-solid fa-house"></i>
+        <h3>Home Appliances</h3>
+    </div>
 
-        </section>
+</div>
+
+
     </main>
     <footer>
 
@@ -279,13 +225,46 @@
         </p>
 
     </footer>
-    <script src="js/script.js"></script>
-    <script src="js/data.js"></script>
-    <script>
-        window.comparePagePath = "pages/compare.html";
-    </script>
-    <script src="js/compare.js"></script>
-    <script src="js/cart.js"></script>
+   <script src="js/script.js"></script>
+<script src="js/data.js"></script>
+
+<script>
+    const popularGrid = document.getElementById("popular-products-grid");
+
+    if (popularGrid && typeof products !== "undefined") {
+
+        const popularProducts = products
+            .slice()
+            .sort((a, b) => b.rating - a.rating)
+            .slice(0, 4);
+
+        popularProducts.forEach(product => {
+
+            const card = document.createElement("div");
+
+            card.classList.add("product-card");
+
+            card.innerHTML = `
+                <img src="${product.image}" alt="${product.name}">
+
+                <h3>${product.name}</h3>
+
+                <p class="price">₹${product.price.toLocaleString("en-IN")}</p>
+
+                <button class="add-cart">Add to Cart</button>
+            `;
+
+            popularGrid.appendChild(card);
+        });
+    }
+</script>
+
+<script>
+    window.comparePagePath = "pages/compare.html";
+</script>
+
+<script src="js/compare.js"></script>
+<script src="js/cart.js"></script>
 
 </body>
 
