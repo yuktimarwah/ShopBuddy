@@ -1,22 +1,31 @@
 const params = new URLSearchParams(window.location.search);
 
 const searchTerm = params.get("search") || "";
+const category = params.get("category") || "";
 
 const filteredProducts = products.filter(product => {
 
-    return (
+    const matchesSearch =
         product.name.toLowerCase().includes(searchTerm) ||
         product.brand.toLowerCase().includes(searchTerm) ||
         product.category.toLowerCase().includes(searchTerm) ||
-        product.tags.join(" ").toLowerCase().includes(searchTerm)
-    );
+        product.tags.join(" ").toLowerCase().includes(searchTerm);
 
+    const matchesCategory =
+        category === "" || product.category === category;
+
+    return matchesSearch && matchesCategory;
 });
 
 const pageTitle = document.querySelector("#page-title");
 const resultCount = document.querySelector("#result-count");
 
-if (searchTerm === "") {
+if (category !== "") {
+
+    pageTitle.innerText = category;
+    resultCount.innerText = `${filteredProducts.length} products found`;
+
+} else if (searchTerm === "") {
 
     pageTitle.innerText = "All Products";
     resultCount.innerText = "";

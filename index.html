@@ -169,30 +169,26 @@
 
     <div class="category-grid">
 
-    <div class="category-card">
-        <i class="fa-solid fa-mobile-screen-button"></i>
-        <h3>Mobiles</h3>
-    </div>
+    <div class="category-card" onclick="window.location.href='pages/products.html?category=Mobile'">
+    <i class="fa-solid fa-mobile-screen-button"></i>
+    <h3>Mobiles</h3>
+</div>
 
-    <div class="category-card">
-        <i class="fa-solid fa-tablet-screen-button"></i>
+<div class="category-card" onclick="window.location.href='pages/products.html?category=Tablet'">        <i class="fa-solid fa-tablet-screen-button"></i>
         <h3>Tablets</h3>
     </div>
 
-    <div class="category-card">
-        <i class="fa-solid fa-clock"></i>
+<div class="category-card" onclick="window.location.href='pages/products.html?category=Smart Watch'">        <i class="fa-solid fa-clock"></i>
         <h3>Smart Watches</h3>
     </div>
 
-    <div class="category-card">
-        <i class="fa-solid fa-snowflake"></i>
+<div class="category-card" onclick="window.location.href='pages/products.html?category=Air Conditioner'">        <i class="fa-solid fa-snowflake"></i>
         <h3>Air Conditioners</h3>
     </div>
 
-    <div class="category-card">
-        <i class="fa-solid fa-house"></i>
-        <h3>Home Appliances</h3>
-    </div>
+<div class="category-card" onclick="document.getElementById('appliance-overlay').style.display='flex'">    <i class="fa-solid fa-house"></i>
+    <h3>Home Appliances</h3>
+</div>
 
 </div>
 
@@ -225,6 +221,46 @@
         </p>
 
     </footer>
+
+    <div class="appliance-overlay" id="appliance-overlay">
+
+    <div class="appliance-dialog">
+
+        <div class="appliance-header">
+            <h2>Choose a Category</h2>
+
+            <button class="close-appliance"
+                    onclick="document.getElementById('appliance-overlay').style.display='none'">
+                &times;
+            </button>
+        </div>
+
+        <p>Select the type of home appliance you're looking for.</p>
+
+        <div class="appliance-options">
+
+<div class="appliance-option"
+     onclick="window.location.href='pages/products.html?category=Refrigerator'">                <i class="fa-solid fa-temperature-low"></i>
+                <h3>Refrigerators</h3>
+            </div>
+
+<div class="appliance-option"
+     onclick="window.location.href='pages/products.html?category=Washing%20Machine'">                <i class="fa-solid fa-shirt"></i>
+                <h3>Washing Machines</h3>
+            </div>
+
+<div class="appliance-option"
+     onclick="window.location.href='pages/products.html?category=Microwave'">                <i class="fa-solid fa-mug-hot"></i>
+                <h3>Microwaves</h3>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
    <script src="js/script.js"></script>
 <script src="js/data.js"></script>
 
@@ -238,24 +274,27 @@
             .sort((a, b) => b.rating - a.rating)
             .slice(0, 4);
 
-        popularProducts.forEach(product => {
+      popularProducts.forEach(product => {
+    const card = document.createElement("div");
+    card.classList.add("product-card");
 
-            const card = document.createElement("div");
+    card.innerHTML = `
+        <img src="${product.image}" alt="${product.name}">
+        <h3>${product.name}</h3>
+        <p class="price">₹${product.price.toLocaleString("en-IN")}</p>
+        <button class="add-cart">Add to Cart</button>
+    `;
 
-            card.classList.add("product-card");
+    card.addEventListener("click", () => {
+        window.location.href = `pages/product-details.html?id=${product.id}`;
+    });
 
-            card.innerHTML = `
-                <img src="${product.image}" alt="${product.name}">
+    card.querySelector(".add-cart").addEventListener("click", (event) => {
+        event.stopPropagation();
+    });
 
-                <h3>${product.name}</h3>
-
-                <p class="price">₹${product.price.toLocaleString("en-IN")}</p>
-
-                <button class="add-cart">Add to Cart</button>
-            `;
-
-            popularGrid.appendChild(card);
-        });
+    popularGrid.appendChild(card);
+});
     }
 </script>
 
@@ -264,8 +303,8 @@
 </script>
 
 <script src="js/compare.js"></script>
-<script src="js/cart.js"></script>
 
+<script src="js/cart.js"></script>
 </body>
 
 </html>
