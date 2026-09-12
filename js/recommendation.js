@@ -255,6 +255,50 @@ category.addEventListener("change", () => {
 
 const recommendButton = document.getElementById("recommend-button");
 
+function getMaxScore(category, fields) {
+
+    let maxScore = 3;
+
+    if (category === "Mobile" || category === "Tablet") {
+        if (fields.ram) maxScore += 3;
+        if (fields.storage) maxScore += 3;
+        if (fields.priority) maxScore += 2;
+    }
+
+    else if (category === "Air Conditioner") {
+        if (fields.ton) maxScore += 3;
+        if (fields.inverter) maxScore += 3;
+        if (fields.starRating) maxScore += 3;
+
+        if (fields.priority) {
+            maxScore += fields.priority === "Budget" ? 3 : 2;
+        }
+    }
+
+    else if (category === "Smart Watch") {
+        if (fields.display) maxScore += 3;
+        if (fields.bluetoothCalling) maxScore += 3;
+        if (fields.priority) maxScore += 2;
+    }
+
+    else if (
+        category === "Refrigerator" ||
+        category === "Washing Machine"
+    ) {
+        if (fields.capacity) maxScore += 3;
+        if (fields.inverter) maxScore += 3;
+        if (fields.starRating) maxScore += 3;
+        if (fields.priority) maxScore += 2;
+    }
+
+    else if (category === "Microwave") {
+        if (fields.capacity) maxScore += 3;
+        if (fields.priority) maxScore += 2;
+    }
+
+    return maxScore;
+}
+
 recommendButton.addEventListener("click", () => {
 
     const selectedCategory = category.value;
@@ -294,6 +338,20 @@ recommendButton.addEventListener("click", () => {
     const capacity = getValue("capacity");
     const priority = getValue("priority");
 
+    const fields = {
+        ram,
+        storage,
+        ton,
+        inverter,
+        starRating,
+        display,
+        bluetoothCalling,
+        capacity,
+        priority
+    };
+
+    const maxScore = getMaxScore(selectedCategory, fields);
+
 
     // ================= HARD FILTER =================
     // Category + budget must match
@@ -324,7 +382,7 @@ recommendButton.addEventListener("click", () => {
 
         if (
             (selectedCategory === "Mobile" ||
-             selectedCategory === "Tablet") &&
+                selectedCategory === "Tablet") &&
             ram &&
             product.ram
         ) {
@@ -348,7 +406,7 @@ recommendButton.addEventListener("click", () => {
 
         if (
             (selectedCategory === "Mobile" ||
-             selectedCategory === "Tablet") &&
+                selectedCategory === "Tablet") &&
             storage &&
             product.storage
         ) {
@@ -734,24 +792,24 @@ recommendButton.addEventListener("click", () => {
     }
 
 
-    recommendations.forEach((item, index) => {
+   recommendations.forEach((item, index) => {
 
-        const product = item.product;
+    const product = item.product;
 
-        const card = document.createElement("div");
+    const matchPercentage = Math.round(
+        (item.score / maxScore) * 100
+    );
 
-        card.classList.add("recommendation-card");
+    const cardWrapper = document.createElement("div");
+    cardWrapper.classList.add("recommendation-wrapper");
 
+    cardWrapper.innerHTML = `
+        ${index === 0 ? '<span class="best-match">Best Match</span>' : ''}
 
-        card.innerHTML = `
-            ${
-                index === 0
-                    ? `<span class="best-match">⭐ Best Match</span>`
-                    : ""
-            }
+        <div class="recommendation-card">
 
             <img
-                src="../${product.image}"
+                src="${product.image}"
                 alt="${product.name}"
             >
 
@@ -775,7 +833,7 @@ recommendButton.addEventListener("click", () => {
                 </p>
 
                 <p class="match-score">
-                    Match Score: ${item.score}
+                    ${matchPercentage}% Match
                 </p>
 
                 <button
@@ -786,10 +844,10 @@ recommendButton.addEventListener("click", () => {
                 </button>
 
             </div>
-        `;
+        </div>
+    `;
 
-
-        resultsContainer.appendChild(card);
+    resultsContainer.appendChild(cardWrapper);
+});
     });
 
-});
