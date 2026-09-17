@@ -32,6 +32,16 @@ fetch(navbarPath)
                 `${productsPath}?search=${encodeURIComponent(searchTerm)}`;
         });
 
+        const wishlistNav = document.getElementById("wishlist-nav");
+
+wishlistNav.addEventListener("click", () => {
+    const wishlistPath = window.location.pathname.includes("/pages/")
+        ? "wishlist.html"
+        : "pages/wishlist.html";
+
+    window.location.href = wishlistPath;
+});
+
         const cartNav = document.getElementById("cart-nav");
 
 cartNav.addEventListener("click", () => {
@@ -41,6 +51,17 @@ cartNav.addEventListener("click", () => {
 
     window.location.href = cartPath;
 })
+
+const accountNav = document.getElementById("account-nav");
+
+accountNav.addEventListener("click", () => {
+    const accountPath = window.location.pathname.includes("/pages/")
+        ? "account.html"
+        : "pages/account.html";
+
+    window.location.href = accountPath;
+});
+
 const cart = JSON.parse(localStorage.getItem("cartItems")) || [];
 const cartCount = document.getElementById("cart-count");
 

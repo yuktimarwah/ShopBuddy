@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <title>ShopBuddy</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/products.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="css/navbar.css">
 </head>
@@ -236,6 +237,7 @@
 
    <script src="js/script.js"></script>
 <script src="js/data.js"></script>
+<script src="js/wishlist.js"></script>
 
 <script>
     const popularGrid = document.getElementById("popular-products-grid");
@@ -253,6 +255,9 @@
 
     card.innerHTML = `
         <img src="${product.image}" alt="${product.name}">
+        <button class="wishlist-btn" data-id="${product.id}">
+    <i class="fa-regular fa-heart"></i>
+</button>
         <h3>${product.name}</h3>
         <p class="price">₹${product.price.toLocaleString("en-IN")}</p>
         <button class="add-cart" data-id="${product.id}">Add to Cart</button>
@@ -267,6 +272,15 @@
     addToCart(product.id);
 });
 
+const wishlistButton = card.querySelector(".wishlist-btn");
+
+    wishlistButton.addEventListener("click", (event) => {
+        event.stopPropagation();
+
+        const productId = wishlistButton.dataset.id;
+        toggleWishlist(productId);
+    });
+
     popularGrid.appendChild(card);
 });
     }
@@ -275,6 +289,7 @@
 <script>
     window.comparePagePath = "pages/compare.html";
 </script>
+
 
 <script src="js/compare.js"></script>
 

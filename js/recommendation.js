@@ -813,6 +813,10 @@ recommendButton.addEventListener("click", () => {
                 alt="${product.name}"
             >
 
+            <button class="wishlist-btn" data-id="${product.id}">
+        <i class="fa-regular fa-heart"></i>
+    </button>
+
             <div class="recommendation-info">
 
                 <p class="brand">
@@ -848,6 +852,14 @@ recommendButton.addEventListener("click", () => {
     `;
 
     resultsContainer.appendChild(cardWrapper);
+    const wishlistButton = cardWrapper.querySelector(".wishlist-btn");
+
+wishlistButton.addEventListener("click", (event) => {
+    event.stopPropagation();
+
+    const productId = wishlistButton.dataset.id;
+    toggleWishlist(productId);
+});
 });
     });
 

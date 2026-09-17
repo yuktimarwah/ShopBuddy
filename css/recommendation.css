@@ -232,3 +232,45 @@
     font-size: 15px;
     font-weight: 600;
 }
+
+
+.recommendation-card {
+    position: relative;
+}
+
+.recommendation-card .wishlist-btn {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+
+    width: 42px;
+    height: 42px;
+
+    padding: 0;
+    margin: 0;
+
+    border: none;
+    border-radius: 50%;
+
+    background: white;
+    color: #133663;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 21px;
+    cursor: pointer;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+
+    z-index: 5;
+}
+
+.recommendation-card .wishlist-btn:hover {
+    transform: scale(1.08);
+}
+
+.recommendation-card .wishlist-btn.wishlisted {
+    color: #e63946;
+}

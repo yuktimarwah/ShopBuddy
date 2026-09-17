@@ -77,3 +77,49 @@
 .buttons button {
     flex: 1;
 }
+
+.product-card {
+    position: relative;
+}
+
+.wishlist-btn {
+    position: absolute !important;
+    top: 18px !important;
+    right: 18px !important;
+
+    width: 42px !important;
+    min-width: 42px !important;
+    max-width: 42px !important;
+
+    height: 42px !important;
+    min-height: 42px !important;
+    max-height: 42px !important;
+
+    padding: 0 !important;
+    margin: 0 !important;
+
+    border: none !important;
+    border-radius: 50% !important;
+
+    background: white !important;
+    color: #133663 !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    font-size: 21px !important;
+    cursor: pointer;
+
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+
+    z-index: 5;
+}
+
+.wishlist-btn:hover {
+    transform: scale(1.08);
+}
+
+.wishlist-btn.wishlisted {
+    color: #e63946 !important;
+}

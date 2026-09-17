@@ -54,11 +54,11 @@ comparisonContainer.innerHTML = `
         <div class="comparison-row comparison-heading">
             <div>Specification</div>
             <div>
-                <img src="../${product1.image}" alt="${product1.name}">
+                <img src="${product1.image}" alt="${product1.name}">
                 <h2>${product1.name}</h2>
             </div>
             <div>
-                <img src="../${product2.image}" alt="${product2.name}">
+                <img src="${product2.image}" alt="${product2.name}">
                 <h2>${product2.name}</h2>
             </div>
         </div>

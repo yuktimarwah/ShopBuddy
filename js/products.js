@@ -48,6 +48,9 @@ filteredProducts.forEach(product => {
     const card = `
     <div class="product-card" data-id="${product.id}">
     <img src="${product.image}" alt="${product.name}">
+    <button class="wishlist-btn" data-id="${product.id}">
+    <i class="fa-regular fa-heart"></i>
+</button>
     <p class="brand">${product.brand}</p>
     <h3 class="name">${product.name}</h3>
     <p class="specs">${product.ram} | ${product.storage}</p>
@@ -93,6 +96,14 @@ compareButton.addEventListener("click", (event) => {
 
     openCompareDialog(productId);
 
+});
+const wishlistButton = card.querySelector(".wishlist-btn");
+
+wishlistButton.addEventListener("click", (event) => {
+    event.stopPropagation();
+
+    const productId = wishlistButton.dataset.id;
+    toggleWishlist(productId);
 });
 
 });
