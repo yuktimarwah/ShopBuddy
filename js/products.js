@@ -53,7 +53,7 @@ filteredProducts.forEach(product => {
     <p class="specs">${product.ram} | ${product.storage}</p>
     <p class="price">₹${product.price}</p>
     <div class="buttons">
-    <button class="add-cart">Add to Cart</button>
+    <button class="add-cart" data-id="${product.id}">Add to Cart</button>
     <button class="compare">
         Compare
     </button>
@@ -70,7 +70,6 @@ productCards.forEach(card => {
 
     card.addEventListener("click", () => {
         const productId = card.dataset.id;
-
         window.location.href = `product-details.html?id=${productId}`;
     });
 
@@ -78,6 +77,22 @@ productCards.forEach(card => {
 
     addCartButton.addEventListener("click", (event) => {
         event.stopPropagation();
+
+        const productId = addCartButton.dataset.id;
+
+        addToCart(productId);
     });
+
+   const compareButton = card.querySelector(".compare");
+
+compareButton.addEventListener("click", (event) => {
+
+    event.stopPropagation();
+
+    const productId = card.dataset.id;
+
+    openCompareDialog(productId);
+
+});
 
 });

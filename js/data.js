@@ -692,30 +692,22 @@ const products = [
 ];
 
 
-function getProductImage(product) {
-   const imageFolder = window.location.pathname.includes("/pages/")
+const imageFolder = window.location.pathname.includes("/pages/")
     ? "../images/"
     : "images/";
 
+const categoryImages = {
+    "Mobile": "Mobile.avif",
+    "Tablet": "Tablet.avif",
+    "Smart Watch": "SmartWatch.webp",
+    "Air Conditioner": "Airconditioner.avif",
+    "Refrigerator": "Refrigrator.webp",
+    "Washing Machine": "WashingMachine.avif",
+    "Microwave": "microwave.avif"
+};
+
 function getProductImage(product) {
-    const categoryImages = {
-        "Mobile": "Mobile.avif",
-        "Tablet": "Tablet.avif",
-        "Smart Watch": "SmartWatch.webp",
-        "Air Conditioner": "Airconditioner.avif",
-        "Refrigerator": "Refrigrator.webp",
-        "Washing Machine": "WashingMachine.avif",
-        "Microwave": "microwave.avif"
-    };
-
     return imageFolder + categoryImages[product.category];
-}
-
-products.forEach(product => {
-    product.image = getProductImage(product);
-});
-
-    return categoryImages[product.category];
 }
 
 products.forEach(product => {

@@ -1,15 +1,48 @@
-const compareNav = document.getElementById("compare-nav");
-const compareOverlay = document.getElementById("compare-overlay");
-const closeCompare = document.getElementById("close-compare");
+document.addEventListener("navbarLoaded", () => {
 
-compareNav.addEventListener("click", () => {
+    const compareNav = document.getElementById("compare-nav");
+
+    const compareOverlay = document.getElementById("compare-overlay");
+
+    const closeCompare = document.getElementById("close-compare");
+
+    compareNav.addEventListener("click", () => {
+    openCompareDialog();
+});
+
+    closeCompare.addEventListener("click", () => {
+
+        compareOverlay.style.display = "none";
+
+    });
+
+});
+
+function openCompareDialog(productId = null) {
+
+    const compareOverlay = document.getElementById("compare-overlay");
+    const compareInput1 = document.getElementById("compare-product-1");
+    const compareInput2 = document.getElementById("compare-product-2");
+
+    compareInput1.value = "";
+    compareInput2.value = "";
+
+    compareInput1.dataset.productId = "";
+    compareInput2.dataset.productId = "";
+
+    if (productId) {
+        const product = products.find(
+            product => String(product.id) === String(productId)
+        );
+
+        if (product) {
+            compareInput1.value = product.name;
+            compareInput1.dataset.productId = product.id;
+        }
+    }
+
     compareOverlay.style.display = "flex";
-});
-
-closeCompare.addEventListener("click", () => {
-    compareOverlay.style.display = "none";
-});
-
+}
 
 const compareInput1 = document.getElementById("compare-product-1");
 const compareInput2 = document.getElementById("compare-product-2");

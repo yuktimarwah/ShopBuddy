@@ -214,7 +214,7 @@ productDetails.innerHTML = `
         <p class="tax-info">Inclusive of all taxes</p>
 
         <div class="product-actions">
-            <button class="add-cart">Add to Cart</button>
+            <button class="add-cart" data-id="${product.id}">Add to Cart</button>
             <button class="compare">Compare</button>
         </div>
 
@@ -231,11 +231,9 @@ productDetails.innerHTML = `
 const compareButton = productDetails.querySelector(".compare");
 
 compareButton.addEventListener("click", () => {
-    const compareOverlay = document.getElementById("compare-overlay");
 
-    if (compareOverlay) {
-        compareOverlay.style.display = "flex";
-    }
+    openCompareDialog(product.id);
+
 });
 
 const whyButton = productDetails.querySelector(".why-consider-btn");
