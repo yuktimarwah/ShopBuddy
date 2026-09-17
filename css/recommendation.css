@@ -274,3 +274,46 @@
 .recommendation-card .wishlist-btn.wishlisted {
     color: #e63946;
 }
+
+@media (max-width: 600px) {
+
+    .recommendation-page {
+        width: 90%;
+        margin: 35px auto 50px;
+    }
+
+    .recommendation-header h1 {
+        font-size: 30px;
+    }
+
+    .recommendation-header p {
+        font-size: 16px;
+    }
+
+    .recommendation-form {
+        padding: 25px 20px;
+    }
+
+    #category-fields {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    #category-fields label {
+        font-size: 17px;
+    }
+
+    #category-fields select {
+        font-size: 16px;
+    }
+
+    .recommendation-results {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .recommendation-card img {
+        height: 230px;
+    }
+
+}
