@@ -102,6 +102,23 @@ function renderCart() {
     `;
 }
 
+document.addEventListener("click", (event) => {
+
+    const cartItem = event.target.closest(".cart-item");
+
+    if (!cartItem) {
+        return;
+    }
+
+    if (event.target.closest(".remove-cart")) {
+        return;
+    }
+
+    const productId = cartItem.dataset.id;
+
+    window.location.href = `product-details.html?id=${productId}`;
+});
+
 updateCartCount();
 renderCart();
 

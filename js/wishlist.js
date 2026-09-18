@@ -70,7 +70,7 @@ wishlistContainer.innerHTML = `
     <div class="wishlist-grid">
 
         ${wishlistProducts.map(product => `
-            <div class="wishlist-card">
+            <div class="wishlist-card" data-id="${product.id}">
 
                 <img
                     src="${product.image}"
@@ -100,6 +100,22 @@ wishlistContainer.innerHTML = `
 
 
 }
+document.addEventListener("click", (event) => {
+
+    const wishlistCard = event.target.closest(".wishlist-card");
+
+    if (!wishlistCard) {
+        return;
+    }
+
+    if (event.target.closest(".remove-wishlist")) {
+        return;
+    }
+
+    const productId = wishlistCard.dataset.id;
+
+    window.location.href = `product-details.html?id=${productId}`;
+});
 
 document.addEventListener("click", event => {
 

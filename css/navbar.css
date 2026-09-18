@@ -1,15 +1,16 @@
-.navbar{
 
-    display:flex;
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 50px;
+    background-color: #133663;
 
-    justify-content:space-between;
-
-    align-items:center;
-
-    padding:18px 50px;
-
-    background-color:#133663;
-
+}
+header {
+    position: sticky;
+    top: 0;
+    z-index: 999;
 }
 .logo{
 
