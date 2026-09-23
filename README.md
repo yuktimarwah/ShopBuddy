@@ -268,7 +268,7 @@ The next phase will extend ShopBuddy into a **MERN-based application** with back
 
 ShopBuddy is deployed using **Vercel**.
 
-The deployed version can be accessed from the project's Vercel deployment.
+🔗 [Live Demo](https://shop-buddy-nine.vercel.app/)
 
 ## 📄 License
 
